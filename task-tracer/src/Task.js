@@ -1,24 +1,30 @@
 import React from "react";
-import { TiDelete, TiEdit } from "react-icons/ti";
-import { TaskDiv } from "./CardStyle";
-const Task = () => {
+import { FaTimes, FaEdit } from "react-icons/fa";
+import { TaskDiv, TaskOut } from "./CardStyle";
+
+const Task = ({ full, del, taskDone }) => {
   return (
-    <TaskDiv>
-      <h6>
-        Ders Çalış{" "}
-        <a>
-          {" "}
-          <TiDelete />{" "}
-        </a>
-      </h6>
-      <p>
-        tarih{" "}
-        <a>
-          {" "}
-          <TiEdit />{" "}
-        </a>{" "}
-      </p>{" "}
-    </TaskDiv>
+    <TaskOut>
+      {full.map((full) => {
+        return (
+          <TaskDiv
+            style={{
+              textDecoration: full.isDone == true ? "line-through" : "none",
+              borderLeft: full.isDone == true ? "8px solid purple" : 0,
+            }}
+            key={full.id}
+            onDoubleClick={() => taskDone(full.id)}
+          >
+            <h3>
+              {full.task}
+
+              <FaTimes color="red" onClick={() => del(full.id)} />
+            </h3>
+            <p>{full.date}</p>
+          </TaskDiv>
+        );
+      })}
+    </TaskOut>
   );
 };
 

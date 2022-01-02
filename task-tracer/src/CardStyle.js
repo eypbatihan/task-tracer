@@ -25,6 +25,12 @@ export const CardContainer = styled.div`
     hsla(211, 96%, 62%, 1) 0%,
     hsla(295, 94%, 76%, 1) 100%
   );
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.1px;
+  }
 `;
 export const Header = styled.div`
   display: flex;
@@ -69,33 +75,27 @@ export const TasksDiv = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+export const TaskOut = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const TaskDiv = styled.div`
   display: flex;
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 0 0.7rem;
   flex-direction: column;
   background: #ffefc1;
   border-radius: 0.3rem;
   width: 280px;
+  cursor: pointer;
 
-  h6 {
+  h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 0.1px;
-    a {
-      color: red;
-    }
-  }
-  p {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 0.1px;
-    a {
-      color: green;
-    }
   }
 `;
 export const ButtonDel = styled.button`
