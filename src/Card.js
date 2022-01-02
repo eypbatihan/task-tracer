@@ -8,7 +8,7 @@ const Card = () => {
   const [full, setFull] = useState([]);
 
   const input = () => {
-    buttonName == "Close Add Task Bar"
+    buttonName === "Close Add Task Bar"
       ? setButtonName("Show Add Task Bar")
       : setButtonName("Close Add Task Bar");
   };
@@ -37,14 +37,16 @@ const Card = () => {
           <button
             style={{
               background:
-                buttonName == "Close Add Task Bar" ? "red" : "#800080",
+                buttonName === "Close Add Task Bar" ? "red" : "#800080",
             }}
             onClick={input}
           >
             {buttonName}
           </button>
         </Header>
-        {buttonName == "Close Add Task Bar" ? <Form addFull={addFull} /> : null}
+        {buttonName === "Close Add Task Bar" ? (
+          <Form addFull={addFull} />
+        ) : null}
         <Tasks full={full} del={del} taskDone={taskDone} />
 
         <ButtonDel onClick={AllDel}>All Tasks Delete</ButtonDel>

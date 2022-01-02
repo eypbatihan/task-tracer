@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTimes, FaEdit } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { TaskDiv, TaskOut } from "./CardStyle";
 
 const Task = ({ full, del, taskDone }) => {
@@ -9,8 +9,8 @@ const Task = ({ full, del, taskDone }) => {
         return (
           <TaskDiv
             style={{
-              textDecoration: full.isDone == true ? "line-through" : "none",
-              borderLeft: full.isDone == true ? "8px solid purple" : 0,
+              textDecoration: full.isDone === true ? "line-through" : "none",
+              borderLeft: full.isDone === true ? "8px solid purple" : 0,
             }}
             key={full.id}
             onDoubleClick={() => taskDone(full.id)}
