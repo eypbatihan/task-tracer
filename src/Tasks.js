@@ -1,13 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { TasksDiv } from "./CardStyle";
 import Task from "./Task";
 
-const Tasks = ({ full, del, taskDone }) => {
+const Tasks = () => {
+  const { list } = useSelector((state) => state.todoReducer);
   return (
-    <TasksDiv>
-      <Task full={full} del={del} taskDone={taskDone} />
-      {full.length < 1 ? <p>NO TASK TO SHOW</p> : null}
-    </TasksDiv>
+    <TasksDiv>{list.length > 0 ? <Task /> : <p>NO TASK TO SHOW</p>}</TasksDiv>
   );
 };
 

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FormInput, TaskBar } from "./CardStyle";
+import { addTodo } from "./redux/actions/todoActions";
 
-const Form = ({ addFull }) => {
-  const [task, setTask] = useState("");
+const Form = () => {
+  const [text, setText] = useState("");
   const [date, setDate] = useState("");
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const id = Math.floor(Math.random() * 100) + 1;
-    addFull({ task, date, isDone: false, id });
-    setTask("");
+    dispatch(addTodo(text, date));
+    setText("");
     setDate("");
   };
 
@@ -18,20 +20,20 @@ const Form = ({ addFull }) => {
       <FormInput onSubmit={onSubmit}>
         <label htmlFor="task">Task</label>
         <input
+          onChange={(e) => setText(e.target.value)}
           type="text"
           required
           placeholder="Task"
           id="task"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
+          value={text}
         />
         <label htmlFor="day">Day & Time</label>
         <input
+          onChange={(e) => setDate(e.target.value)}
           type="date"
           required
           id="day"
           value={date}
-          onChange={(e) => setDate(e.target.value)}
         />
         <button type="submit">SAVE TASK</button>
       </FormInput>

@@ -17,6 +17,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 5px double purple;
   border-radius: 1rem;
   width: 300px;
   padding: 1rem;
@@ -26,6 +27,7 @@ export const CardContainer = styled.div`
     hsla(211, 96%, 62%, 1) 0%,
     hsla(295, 94%, 76%, 1) 100%
   );
+
   p {
     display: flex;
     justify-content: space-between;
@@ -47,6 +49,7 @@ export const Header = styled.div`
     border: none;
     background: purple;
     color: white;
+    cursor: pointer;
   }
 `;
 export const TaskBar = styled.div`
@@ -60,6 +63,7 @@ export const TaskBar = styled.div`
     border-radius: 0.3rem;
     border: none;
     padding: 4px;
+    cursor: pointer;
   }
 `;
 export const FormInput = styled.form`
@@ -87,7 +91,7 @@ export const TaskDiv = styled.div`
   margin: 0.5rem;
   padding: 0 0.7rem;
   flex-direction: column;
-  background: #ffefc1;
+  background: #fee089;
   border-radius: 0.3rem;
   width: 280px;
   cursor: pointer;
@@ -105,4 +109,5 @@ export const ButtonDel = styled.button`
   border: none;
   padding: 0.3rem;
   border-radius: 0.3rem;
+  cursor: pointer;
 `;

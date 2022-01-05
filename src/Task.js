@@ -1,29 +1,35 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { TaskDiv, TaskOut } from "./CardStyle";
+import { deleteTodo, toggleTodo } from "./redux/actions/todoActions";
 
-const Task = ({ full, del, taskDone }) => {
+const Task = () => {
+  const { list } = useSelector((state) => state.todoReducer);
+  const dispatch = useDispatch();
+
   return (
     <TaskOut>
-      {full.map((full) => {
-        return (
-          <TaskDiv
-            style={{
-              textDecoration: full.isDone === true ? "line-through" : "none",
-              borderLeft: full.isDone === true ? "8px solid purple" : 0,
-            }}
-            key={full.id}
-            onDoubleClick={() => taskDone(full.id)}
-          >
-            <h3>
-              {full.task}
-
-              <FaTimes color="red" onClick={() => del(full.id)} />
-            </h3>
-            <p>{full.date}</p>
-          </TaskDiv>
-        );
-      })}
+      {list.map((todo) => (
+        <TaskDiv
+          style={{
+            textDecoration: todo.completed === true ? "line-through" : null,
+            borderLeft: todo.completed === true ? "8px solid purple" : "none",
+          }}
+          key={todo.id}
+          onDoubleClick={() => dispatch(toggleTodo(todo.id))}
+        >
+          <h3>
+            {" "}
+            {todo.text}
+            <FaTimes
+              style={{ color: "red" }}
+              onClick={() => dispatch(deleteTodo(todo.id))}
+            />
+          </h3>
+          <p>{todo.date}</p>
+        </TaskDiv>
+      ))}
     </TaskOut>
   );
 };
